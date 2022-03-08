@@ -1,14 +1,22 @@
-from enum import auto
-from turtle import title
 from django.db import models
 
 # Create your models here.
-# CREATE TABLE
-
 JOB_TYPE_CHOICE = [
     ('FT', 'Full Time'),
     ('PT', 'Part Time'),
 ]
+
+# # FOCUS YOU MUST CRETE IT BEFORE TO AVOID ERRORS
+# # DON'T FORGET TO MIGRATE IT
+# # DON'T FORGET OT REGISTER IT ON AMDMIN
+
+
+class Category (models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return (self.name)
+# REALTIONS
 
 
 class Job(models.Model):
@@ -21,7 +29,10 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=1)
     experience = models.IntegerField(default=1)
-    #WATING FOR CATEGORY BECAUSE IT ORM (OBJECT RELATION MAPPING)
-    # constructor 
+    #RELATION ONE TO MANY
+    category = models.ForeignKey(Category, on_delete=models.CASCADE);
+    # WATING FOR CATEGORY BECAUSE IT ORM (OBJECT RELATION MAPPING)
+    # constructor
+
     def __str__(self):
         return (self.title)
