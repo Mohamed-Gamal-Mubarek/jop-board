@@ -1,3 +1,4 @@
+from distutils.command import upload
 from django.db import models
 
 # Create your models here.
@@ -33,6 +34,7 @@ class Job(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE);
     # WATING FOR CATEGORY BECAUSE IT ORM (OBJECT RELATION MAPPING)
     # constructor
+    img = models.ImageField(upload_to = 'jobs/')
 
     def __str__(self):
         return (self.title)
