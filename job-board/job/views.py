@@ -9,5 +9,5 @@ def jop_list(request):
     return HttpRequest("joplist")
 
 
-def jop_details(request):
+def jop_details(request, id):
     return HttpRequest("jop details")
