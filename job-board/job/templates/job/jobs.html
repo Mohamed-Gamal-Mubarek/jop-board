@@ -162,7 +162,7 @@
                   <div class="jobs_conetent">
                     {% comment %} JOB TITLE {% endcomment %}
                     <a href="job_details.html">
-                      <h4>{{Job}}</h4>
+                      <h4>{{ Job }}</h4>
                     </a>
                     {% comment %} JOB TITLE {% endcomment %}
 
@@ -210,28 +210,43 @@
             {% comment %} ./JOBS {% endcomment %}
           </div>
 
-          {% comment %} PAGINATE {% endcomment %}
+          {% if Jobs.has_other_pages %}
+          <!-- PAGINATION -->
           <div class="row">
             <div class="col-lg-12">
               <div class="pagination_wrap">
                 <ul>
+
+
+                  {% if Jobs.has_previous %}
                   <li>
-                    <a href="#"> <i class="ti-angle-left"></i> </a>
+                    <a href="?page={{Jobs.previous_page_number}}"> <i class="ti-angle-left"></i> </a>
                   </li>
+                  {% endif %}
+
+                  {%  for i in Jobs.paginator.page_range  %}
                   <li>
-                    <a href="#"><span>01</span></a>
+                    <a href="?page={{i}}"><span>{{i}}</span></a>
                   </li>
+                  {% endfor %}
+
+
+                  {% if Jobs.has_next %}
                   <li>
-                    <a href="#"><span>02</span></a>
+                    <a href="?page={{Jobs.next_page_number}}"> <i class="ti-angle-right"></i> </a>
                   </li>
-                  <li>
-                    <a href="#"> <i class="ti-angle-right"></i> </a>
-                  </li>
+                  {% endif %}
+
                 </ul>
               </div>
             </div>
           </div>
-          {% comment %} ./PAGINATE {% endcomment %}
+          <!-- ./PAGINATION -->
+
+          {% endif %}
+
+
+
         </div>
       </div>
     </div>
