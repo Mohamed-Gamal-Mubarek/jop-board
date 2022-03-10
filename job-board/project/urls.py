@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+# USNING NAME SPACE
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('job.urls'))
+    # IT IS A MAN URL TO APP PROJECT
+    # SO IT MUST HAV A NAME SPACE
+    path('', include('job.urls'), namspace="job")
 ]
-
+# REVISION THIS
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT);
+# REVISION THIS
