@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="bradcam_text">
-          <h3>4536+ Jobs Available</h3>
+          <h3> {{Jobs|length }} Job{% if Jobs.count > 1 %}s{% endif %} Available</h3>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="col-lg-3">
         {% comment %} FILTER {% endcomment %}
         <div class="job_filter white-bg">
-          
+
           <div class="form_inner white-bg">
             <h3>Filter</h3>
             <form action="#">
@@ -97,17 +97,12 @@
             <label for="amount">Price range:</label>
             <div id="slider-range"></div>
             <p>
-              <input
-                type="text"
-                id="amount"
-                readonly
-                style="
-                  border: 0;
-                  color: #7a838b;
-                  font-size: 14px;
-                  font-weight: 400;
-                "
-              />
+              <input type="text" id="amount" readonly style="
+                      border: 0;
+                      color: #7a838b;
+                      font-size: 14px;
+                      font-weight: 400;
+                    " />
             </p>
           </div>
           <div class="reset_btn">
@@ -151,63 +146,64 @@
 
             {% for Job in Jobs %}
 
-              <div class="col-lg-12 col-md-12">
-                <div class="single_jobs white-bg d-flex justify-content-between">
+            <div class="col-lg-12 col-md-12">
+              <div class="single_jobs white-bg d-flex justify-content-between">
 
-                  {% comment %} JOBS LEFT {% endcomment %}
-                  <div class="jobs_left d-flex align-items-center">
+                {% comment %} JOBS LEFT {% endcomment %}
+                <div class="jobs_left d-flex align-items-center">
 
-                    {% comment %} IMAGE JOB {% endcomment %}
-                    <div class="thumb">
-                      <img src="img/svg_icon/1.svg" alt="" />
-                    </div>
-                    {% comment %} IMAGE JOB {% endcomment %}
+                  {% comment %} IMAGE JOB {% endcomment %}
+                  <div class="thumb">
+                    <img src="img/svg_icon/1.svg" alt="" />
+                  </div>
+                  {% comment %} IMAGE JOB {% endcomment %}
 
-                    {% comment %} JOBS CONTENT {% endcomment %}
-                    <div class="jobs_conetent">
-                      {% comment %} JOB TITLE {% endcomment %}
-                      <a href="job_details.html"><h4>{{job}}</h4></a>
-                      {% comment %} JOB TITLE {% endcomment %}
+                  {% comment %} JOBS CONTENT {% endcomment %}
+                  <div class="jobs_conetent">
+                    {% comment %} JOB TITLE {% endcomment %}
+                    <a href="job_details.html">
+                      <h4>{{Job}}</h4>
+                    </a>
+                    {% comment %} JOB TITLE {% endcomment %}
 
-                      {% comment %} JOB LOCATION {% endcomment %}
-                      <div class="links_locat d-flex align-items-center">
-                        <div class="location">
-                          <p><i class="fa fa-map-marker"></i> California, USA</p>
-                        </div>
-
-                        <div class="location">
-                          <p><i class="fa fa-clock-o"></i> Part-time</p>
-                        </div>
+                    {% comment %} JOB LOCATION {% endcomment %}
+                    <div class="links_locat d-flex align-items-center">
+                      <div class="location">
+                        <p><i class="fa fa-map-marker"></i> California, USA</p>
                       </div>
-                      {% comment %} JOB LOCATION {% endcomment %}
 
+                      <div class="location">
+                        <p><i class="fa fa-clock-o"></i> {{Job.type}} </p>
+                      </div>
                     </div>
-                    {% comment %} JOBS CONTENT {% endcomment %}
+                    {% comment %} JOB LOCATION {% endcomment %}
 
                   </div>
-                  {% comment %} ./JOBS LEFT {% endcomment %}
+                  {% comment %} JOBS CONTENT {% endcomment %}
 
-                  {% comment %} JOBS RIGHT {% endcomment %}
-                  <div class="jobs_right">
-                    {% comment %} JOP APPLY {% endcomment %}
-                    <div class="apply_now">
-                      <a class="heart_mark" href="#">
-                        <i class="fa fa-heart"></i>
-                      </a>
-                      <a href="{% url 'job:jobDetails' Job.id %}" class="boxed-btn3">Apply Now</a>
-                    </div>
-                    {% comment %} ./JOP APPLY {% endcomment %}
-
-                    {% comment %} JOB DATE {% endcomment %}
-                    <div class="date">
-                      <p>Date line: 31 Jan 2020</p>
-                      <p>Date line: {{Job.published_at| date:'j M Y'}}</p>
-                    </div>
-                    {% comment %} JOB DATE {% endcomment %}
-                  </div>
-                  {% comment %} ./JOBS RIGHT {% endcomment %}
                 </div>
+                {% comment %} ./JOBS LEFT {% endcomment %}
+
+                {% comment %} JOBS RIGHT {% endcomment %}
+                <div class="jobs_right">
+                  {% comment %} JOP APPLY {% endcomment %}
+                  <div class="apply_now">
+                    <a class="heart_mark" href="#">
+                      <i class="fa fa-heart"></i>
+                    </a>
+                    <a href="{% url 'job:jobDetails' Job.id %}" class="boxed-btn3">Apply Now</a>
+                  </div>
+                  {% comment %} ./JOP APPLY {% endcomment %}
+
+                  {% comment %} JOB DATE {% endcomment %}
+                  <div class="date">
+                    <p>Date line: {{Job.published_at| date:'j M Y'}}</p>
+                  </div>
+                  {% comment %} JOB DATE {% endcomment %}
+                </div>
+                {% comment %} ./JOBS RIGHT {% endcomment %}
               </div>
+            </div>
 
             {% endfor %}
 

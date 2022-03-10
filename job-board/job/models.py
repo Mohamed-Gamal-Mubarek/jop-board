@@ -3,8 +3,8 @@ from django.db import models
 
 # Create your models here.
 JOB_TYPE_CHOICE = [
-    ('FT', 'Full Time'),
-    ('PT', 'Part Time'),
+    ('Full Time', 'Full Time'),
+    ('Part Time', 'Part Time'),
 ]
 
 # # FOCUS YOU MUST CRETE IT BEFORE TO AVOID ERRORS
@@ -33,7 +33,7 @@ class Job(models.Model):
     # COLUMN TITLE
     title = models.CharField(max_length=100)
     # location
-    job_type = models.CharField(max_length=100, choices=JOB_TYPE_CHOICE)
+    type = models.CharField(max_length=100, choices=JOB_TYPE_CHOICE)
     description = models.TextField(max_length=1000)
     published_at = models.DateTimeField(auto_now=True)
     vacancy = models.IntegerField(default=1)
