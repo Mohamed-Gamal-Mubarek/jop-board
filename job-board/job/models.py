@@ -17,7 +17,16 @@ class Category (models.Model):
 
     def __str__(self):
         return (self.name)
-# REALTIONS
+
+
+# UPLOAD IMAGE
+def upload_image(instance, fileName):
+    # INSTANCE REFER TO TH MODEL OBJECT
+    # FILE NAME REFER TO IMAGE UPLOAD
+    imageName, extention = fileName.split(".")
+    # PUTTING THE NAME OF AN IMAGE NUMBER BECAUSE IT EASY ON SEARCH (PENDING)
+    return (f"jobs/{instance.id}/{instance.title}/{instance.id}.{extention}")
+# ./UPLOAD IMAGE
 
 
 class Job(models.Model):
@@ -30,11 +39,12 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=1)
     experience = models.IntegerField(default=1)
-    #RELATION ONE TO MANY
-    category = models.ForeignKey(Category, on_delete=models.CASCADE);
+    # RELATION ONE TO MANY
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # WATING FOR CATEGORY BECAUSE IT ORM (OBJECT RELATION MAPPING)
-    # constructor
-    img = models.ImageField(upload_to = 'jobs/')
+    img = models.ImageField(upload_to=upload_image)
 
+    # CONSTRUCTOR
     def __str__(self):
         return (self.title)
+    # CONSTRUCTOR
