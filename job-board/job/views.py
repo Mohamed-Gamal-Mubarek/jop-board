@@ -12,7 +12,7 @@ def jop_list(request):
     # GET ALL JOB 
 
     # STORE ALL JOB IN CONTEXT 
-    context = {'jobs': jobList}
+    context = {'Jobs': jobList}
     # STORE ALL JOB IN CONTEXT
 
     # RETURN  ALL JOB TO RENDER DATA => RENDER DATA * , TEMPLATE YOU WANT TO VIEW , CONTEXT => SOTORE DATA
@@ -22,5 +22,5 @@ def jop_list(request):
 def jop_details(request, id):
     # return( HttpResponse(f"this wil be an one job details by this {id}"))
     job = Job.objects.get(id=id)
-    context = {"job": job}
+    context = {"Job": job}
     return (render(request, 'job/job_details.html', context))
