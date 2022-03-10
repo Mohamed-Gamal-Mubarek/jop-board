@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # IT IS A MAN URL TO APP PROJECT
     # SO IT MUST HAV A NAME SPACE
-    path('', include('job.urls'), namspace="job")
+    path('', include('job.urls', namespace='job'))
 ]
 # REVISION THIS
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
