@@ -1,5 +1,6 @@
 from distutils.command import upload
 from django.db import models
+from django.urls import slugify
 
 # Create your models here.
 JOB_TYPE_CHOICE = [
@@ -43,7 +44,11 @@ class Job(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # WATING FOR CATEGORY BECAUSE IT ORM (OBJECT RELATION MAPPING)
     img = models.ImageField(upload_to=upload_image)
+    slug = models.SlugField(null=True, blank=True)
 
+    # MAKE SLUG FIELD
+    def save(self, *args, **kwargs,):
+        self.slug = slugify(self.title)
     # CONSTRUCTOR
     def __str__(self):
         return (self.title)
