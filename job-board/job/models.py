@@ -1,4 +1,3 @@
-from distutils.command import upload
 from django.db import models
 from django.utils.text import slugify
 
@@ -48,8 +47,9 @@ class Job(models.Model):
     slug = models.SlugField(null=True, blank=True)
 
     # MAKE SLUG FIELD
-    def save(self, *args, **kwargs,):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
+        super(Job, self).save(*args, **kwargs)
     # CONSTRUCTOR
     def __str__(self):
         return (self.title)
