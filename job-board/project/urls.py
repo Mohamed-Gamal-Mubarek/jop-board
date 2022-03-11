@@ -21,6 +21,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #  IT IS FOR USER AUTHINTICATE
+    path('accounts/', include('django.contrib.auth.urls')),
+    # IT IS FOR USER AUTHINTICATE
+    
     # IT IS A MAN URL TO APP PROJECT
     # SO IT MUST HAV A NAME SPACE
     path('', include('job.urls', namespace='job'))
