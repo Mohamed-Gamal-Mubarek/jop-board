@@ -26,8 +26,9 @@ def jop_list(request):
     return (render(request, 'job/jobs.html', context))
 
 
-def jop_details(request, id):
+def jop_details(request, slug):
     # return( HttpResponse(f"this wil be an one job details by this {id}"))
-    job = Job.objects.get(id=id)
+    # job = Job.objects.get(id=id) GET BY ID 
+    job = Job.objects.get(slug=slug) # GET BY SLUG
     context = {"Job": job}
     return (render(request, 'job/job_details.html', context))

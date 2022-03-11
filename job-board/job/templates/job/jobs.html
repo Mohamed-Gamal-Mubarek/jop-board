@@ -20,7 +20,7 @@
   <div class="container">
     <div class="row">
 
-      {% comment %} JOB FILTER {% endcomment %}
+      <!-- JOB FILTER -->
       <div class="col-lg-3">
         {% comment %} FILTER {% endcomment %}
         <div class="job_filter white-bg">
@@ -111,7 +111,7 @@
         </div>
         {% comment %} ./FILTER {% endcomment %}
       </div>
-      {% comment %} JOB FILTER {% endcomment %}
+      <!-- ./JOB FILTER -->
 
       <div class="col-lg-9">
         <div class="recent_joblist_wrap">
@@ -179,7 +179,7 @@
                     <a class="heart_mark" href="#">
                       <i class="fa fa-heart"></i>
                     </a>
-                    <a href="{% url 'job:jobDetails' Job.id %}" class="boxed-btn3">Apply Now</a>
+                    <a href="{% url 'job:jobDetails' Job.slug %}" class="boxed-btn3">Apply Now</a>
                   </div>
                   {% comment %} ./JOP APPLY {% endcomment %}
 

@@ -7,5 +7,5 @@ app_name = 'job'
 # IT MUST TO KNOWING THIS APP TO NAVIGATE
 urlpatterns = [
     path('', jop_list, name="jobs"),
-    path('jobs/<int:id>', jop_details, name='jobDetails' ),
+    path('jobs/<str:slug>', jop_details, name='jobDetails' ),
 ]
