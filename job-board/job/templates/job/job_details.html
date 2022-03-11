@@ -88,7 +88,11 @@
                 <div class="apply_job_form white-bg">
                     <h4>Apply for the job</h4>
                     <form action="#" method="POST" enctype="multipart/form-data">
-                        {{ form }}
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% buttons %}
+                        <button class="boxed-btn3 w-100" type="submit">Apply Now</button>
+                        {% endbuttons %}
                     </form>
                 </div>
                 <!-- FORM APPLY -->
@@ -103,7 +107,7 @@
                     <div class="job_content">
                         <ul>
                             <li>Published on: <span> {{Job.published_at| date:'j M Y'}} </span></li>
-                            <li>Vacancy: <span>{{ Job.vacancy  }}</span></li>
+                            <li>Vacancy: <span>{{ Job.vacancy }}</span></li>
                             <li>Salary: <span>{{ Job.salary }}K</span></li>
                             <!-- <li>Location: <span>California, USA</span></li> -->
                             <li>Job Nature: <span> {{ Job.type }}</span></li>
