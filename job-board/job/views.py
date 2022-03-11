@@ -1,8 +1,9 @@
-from unicodedata import name
 from django.core.paginator import Paginator
 from .forms import ApplyForm, PostJob
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+
 
 from .models import Job
 # Create your views here.
@@ -15,7 +16,7 @@ def jop_list(request):
     # GET ALL JOB
 
     # PAGINATION WILL BE IN HERE
-    paginator = Paginator(jobList, 1)  # SHOW 1 jOB PER PAGE .
+    paginator = Paginator(jobList, 3)  # SHOW 1 jOB PER PAGE .
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -56,7 +57,11 @@ def add_job(request):
         # CHECK FORM IS VALID
         if form.is_valid():
             myForm = form.save(commit=False)
+            # CURRENT USER
+            myForm.owner = request.user
+            # ./CURRENT USER
             myForm.save()
+            return redirect(reverse('job:jobs'))
     else:
         form = PostJob()
 
