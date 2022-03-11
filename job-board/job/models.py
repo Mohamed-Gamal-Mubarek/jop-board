@@ -1,4 +1,4 @@
-from unicodedata import name
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 
@@ -32,6 +32,7 @@ def upload_image(instance, fileName):
 
 
 class Job(models.Model):
+    owner = models.ForeignKey( User , related_name='job_owner', on_delete=models.CASCADE)
     # COLUMN TITLE
     title = models.CharField(max_length=100)
     # location
