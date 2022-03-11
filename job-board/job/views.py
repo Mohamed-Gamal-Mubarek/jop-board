@@ -1,6 +1,6 @@
 from unicodedata import name
 from django.core.paginator import Paginator
-from .forms import ApplyForm
+from .forms import ApplyForm, PostJob
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -51,5 +51,14 @@ def jop_details(request, slug):
 
 # ADD JOB
 def add_job(request):
-    return render(request, 'job/add_job.html' ,{})
+    if request.method == 'POST':
+        form = PostJob(request.POST, request.FILES)
+        # CHECK FORM IS VALID
+        if form.is_valid():
+            myForm = form.save(commit=False)
+            myForm.save()
+    else:
+        form = PostJob()
 
+    context = {'form':form}
+    return render(request, 'job/add_job.html', context)
