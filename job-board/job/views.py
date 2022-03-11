@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.core.paginator import Paginator
 from .forms import ApplyForm
 from django.http import HttpResponse
@@ -46,3 +47,9 @@ def jop_details(request, slug):
 
     context = {"Job": job, 'form': form}
     return (render(request, 'job/job_details.html', context))
+
+
+# ADD JOB
+def add_job(request):
+    return render(request, 'job/add_job.html' ,{})
+
