@@ -149,7 +149,7 @@
                   {% comment %} JOBS CONTENT {% endcomment %}
                   <div class="jobs_conetent">
                     {% comment %} JOB TITLE {% endcomment %}
-                    <a href="job_details.html">
+                    <a href="{% url 'job:jobDetails' Job.slug %}">
                       <h4>{{ Job }}</h4>
                     </a>
                     {% comment %} JOB TITLE {% endcomment %}
