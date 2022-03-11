@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block body %}
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <!-- MAIN TITLE -->
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    
+                </div>
+            </div>
+            <!-- MAIN TITLE -->
+        </div>
+    </div>
+</div>
+<!--/ bradcam_area  -->
+
+<div class="job_details_area">
+    <div class="container">
+        <div class="row">
+            <!-- POST NEW JOB -->
+            <div class="col-lg-10 mx-auto">
+                <!-- FORM APPLY -->
+                <div class="apply_job_form white-bg">
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        {% block content %} {% endblock content %}
+                    </form>
+                </div>
+                <!-- ./FORM APPLY -->
+            </div>
+            <!-- ./POST NEW JOB -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
