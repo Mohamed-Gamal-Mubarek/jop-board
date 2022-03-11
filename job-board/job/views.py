@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from .forms import ApplyForm
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -30,5 +31,12 @@ def jop_details(request, slug):
     # return( HttpResponse(f"this wil be an one job details by this {id}"))
     # job = Job.objects.get(id=id) GET BY ID 
     job = Job.objects.get(slug=slug) # GET BY SLUG
-    context = {"Job": job}
+    
+    # CLIENT CLICK ON THE BUTTON IN THE PAGE DETAILS JOB
+    if request.method == 'POST':
+        pass
+    else:
+        form = ApplyForm()
+
+    context = {"Job": job, 'form':form}
     return (render(request, 'job/job_details.html', context))
