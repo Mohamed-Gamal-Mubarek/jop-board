@@ -20,9 +20,10 @@ from django.conf.urls.static import static
 # USNING NAME SPACE
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     #  IT IS FOR USER AUTHINTICATE
-    path('accounts/', include('django.contrib.auth.urls')),
+    
     # IT IS FOR USER AUTHINTICATE
     
     # IT IS A MAN URL TO APP PROJECT
