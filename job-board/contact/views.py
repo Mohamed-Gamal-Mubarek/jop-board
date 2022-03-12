@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
+from .models import Info
 # Create your views here.
 
 def sendMessage(request):
-    
-    return(render(request, 'contact/contact.html', {}))
+    info =Info.objects.first()
+
+
+    #THAT I WILL SEND
+    context= {'info':info}
+    return(render(request, 'contact/contact.html',context))
