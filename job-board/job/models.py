@@ -3,6 +3,8 @@ from django.db import models
 from django.utils.text import slugify
 
 
+# https://docs.djangoproject.com/en/4.0/topics/db/queries/
+
 # Create your models here.
 JOB_TYPE_CHOICE = [
     ('Full Time', 'Full Time'),
