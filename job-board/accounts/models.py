@@ -19,6 +19,10 @@ don't forget to see that _!!!!_
 class City(models.Model):
     name = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
+
 class Profile(models.Model):
     # ITS CREATED TO ADD SOMTHING TO USER 
     # RELATION ONE TO NOE TO USER
