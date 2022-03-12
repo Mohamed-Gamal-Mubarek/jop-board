@@ -7,5 +7,5 @@ app_name = 'contact'
 # IT MUST TO KNOWING THIS APP TO NAVIGATE
 
 urlpatterns = [
-    path('', sendMessage , name="contactPage"),
+    path('/', sendMessage , name="contactPage"),
 ]
