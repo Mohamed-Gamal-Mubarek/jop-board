@@ -1,9 +1,11 @@
+from tkinter.messagebox import QUESTION
 from django.core.paginator import Paginator
 from .forms import ApplyForm, PostJob
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .filters import JobFilter
 
 from .models import Job
 # Create your views here.
@@ -14,14 +16,15 @@ def jop_list(request):
     # GET ALL JOB BY THIS
     jobList = Job.objects.all()
     # GET ALL JOB
-
+    jobFilter = JobFilter(request.GET, queryset=jobList)
+    jobList = jobFilter.qs
     # PAGINATION WILL BE IN HERE
     paginator = Paginator(jobList, 3)  # SHOW 1 jOB PER PAGE .
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     # STORE ALL JOB IN CONTEXT
-    context = {'Jobs': page_obj}
+    context = {'Jobs': page_obj, 'filter':jobFilter}
     # STORE ALL JOB IN CONTEXT
 
     # RETURN  ALL JOB TO RENDER DATA => RENDER DATA * , TEMPLATE YOU WANT TO VIEW , CONTEXT => SOTORE DATA
