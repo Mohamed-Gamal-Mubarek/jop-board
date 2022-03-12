@@ -35,7 +35,7 @@ def profile_edit(request):
     # TO AVOID ERROR FOR CHEKING THE PAGE DON'T USE THE BUTTON AT FIRST REMMEMBER THAT
     if request.method == 'POST':
         userForm = UserForm(request.POST, instance=request.user)
-        profileForm = ProfileForm(request.POST, instance=profile) 
+        profileForm = ProfileForm(request.POST, request.FILES ,instance=profile) 
         if(userForm.is_valid() and profileForm.is_valid()):
             userForm.save()
             actionProfile = profileForm.save(commit=False)
