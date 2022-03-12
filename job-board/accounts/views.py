@@ -1,4 +1,6 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from .models import Profile
 from .forms import SignupForm, UserForm , ProfileForm
@@ -28,9 +30,26 @@ def profile(request):
 
 
 def profile_edit(request):
+    profile = Profile.objects.get(user=request.user)
+
+    # TO AVOID ERROR FOR CHEKING THE PAGE DON'T USE THE BUTTON AT FIRST REMMEMBER THAT
     if request.method == 'POST':
-        pass
+        userForm = UserForm(request.POST, instance=request.user)
+        profileForm = ProfileForm(request.POST, instance=profile) 
+        if(userForm.is_valid() and profileForm.is_valid()):
+            userForm.save()
+            actionProfile = profileForm.save(commit=False)
+            actionProfile.user = request.user
+            actionProfile.save()
+            return redirect(reverse('accounts:profile'))
+            pass
     else:
-        userForm = UserForm()
-        profileForm = ProfileForm()
-    return render(request, 'accounts/profile_edit.html', {'userForm':userForm})
+        userForm = UserForm(instance=request.user)
+        profileForm = ProfileForm(instance=profile)
+    
+    context = {
+        
+        'userForm':userForm,
+        'profileForm': profileForm
+    }
+    return render(request, 'accounts/profile_edit.html', context)
