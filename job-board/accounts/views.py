@@ -29,7 +29,7 @@ def profile(request):
 
 def profile_edit(request):
     if request.method == 'POST':
-        userForm = UserForm()
+        pass
     else:
         userForm = UserForm()
 
