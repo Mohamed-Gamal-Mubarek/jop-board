@@ -8,6 +8,8 @@ django = "==3.0.6"
 pillow = "*"
 django-bootstrap4 = "*"
 django-filter = "*"
+djangorestframework = "*"
+markdown = "*"
 
 [dev-packages]
 

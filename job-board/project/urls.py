@@ -24,15 +24,17 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     #  IT IS FOR USER AUTHINTICATE
-    
+
     # IT IS FOR USER AUTHINTICATE
-    
+
     # IT IS A MAN URL TO APP PROJECT
     # SO IT MUST HAV A NAME SPACE
     path('', include('job.urls', namespace='job')),
-    path('contact-us', include('contact.urls', namespace='contact'))
+    path('contact-us', include('contact.urls', namespace='contact')),
+    path('api-auth/', include('rest_framework.urls'))
+
 ]
 # REVISION THIS
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT);
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # REVISION THIS

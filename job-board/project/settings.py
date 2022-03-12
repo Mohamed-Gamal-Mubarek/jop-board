@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "bootstrap4",
     "django_filters",
     "contact",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -146,4 +147,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = "mohamedgamalmubarek@gmail.com"
 EMAIL_HOST_PASSWORD = 'iwrpbiypizmoqqxm'
 EMAIL_US_TLS = True
-EMAIL_PORT = '587'
+EMAIL_PORT = 587
