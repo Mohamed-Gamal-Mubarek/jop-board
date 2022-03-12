@@ -32,6 +32,8 @@ def upload_image(instance, fileName):
 
 
 class Job(models.Model):
+    # RELATION ONE TO MANY TO POST OR ADD JOB ( ONE USER CAN CREATE OR POST A JOB) 
+    # ANOTHER SIDE ONE JOB CREATED BY ONE USER OR ONE JOB POSTED BY ONE USER
     owner = models.ForeignKey( User , related_name='job_owner', on_delete=models.CASCADE)
     # COLUMN TITLE
     title = models.CharField(max_length=100)
