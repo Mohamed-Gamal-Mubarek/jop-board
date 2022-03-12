@@ -3,7 +3,7 @@ from .forms import ApplyForm, PostJob
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 
 from .models import Job
 # Create your views here.
@@ -50,8 +50,10 @@ def jop_details(request, slug):
     return (render(request, 'job/job_details.html', context))
 
 
+@login_required
 # ADD JOB
 def add_job(request):
+    
     if request.method == 'POST':
         form = PostJob(request.POST, request.FILES)
         # CHECK FORM IS VALID
