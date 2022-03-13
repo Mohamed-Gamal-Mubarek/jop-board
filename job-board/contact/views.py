@@ -14,7 +14,10 @@ def sendMessage(request):
         subject = request.POST['subject']
         message = request.POST['message']
         email = request.POST['email']
-
+# https://www.sitepoint.com/django-send-email/
+# FOLLOW THIS LINK TO UNDERSTAND HOW TO SEND AN EMAIL
+# THAT IS DJANGO MAIL SENDING EMAIL 
+# => https://docs.djangoproject.com/en/4.0/ref/settings/#std:setting-EMAIL_HOST
         send_mail(
             subject= subject,
             message=message,

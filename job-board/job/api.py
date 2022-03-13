@@ -1,3 +1,5 @@
+# FOLLOW THIS LINK TO UNDERSTAND HOW API WORK WITH YOUR APPLICATION
+# https://www.django-rest-framework.org/
 # VIEWS SPECIFIC API
 from .models import Job
 from .serializers import JobSerializers
@@ -7,7 +9,7 @@ from rest_framework.response import Response
 
 @api_view(['GET'])
 def job_list_api(request):
-    # GET ALL JOBS FROM MODLE JOBS 
+    # GET ALL JOBS FROM MODEL JOBS 
     all_jobs = Job.objects.all() # RETURN TO ME AN ARRAY OF OBJECTS => JOBS
     # STORING AND CONVERTING ALL OBJECTS TO JASON
     data = JobSerializers(all_jobs, many=True).data

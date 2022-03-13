@@ -1,4 +1,3 @@
-from tkinter.messagebox import QUESTION
 from django.core.paginator import Paginator
 from .forms import ApplyForm, PostJob
 from django.http import HttpResponse
@@ -10,7 +9,8 @@ from .filters import JobFilter
 from .models import Job
 # Create your views here.
 
-
+# https://docs.djangoproject.com/en/4.0/ref/request-response/
+# REQUEST AND RESPONSE OPTIONS
 def jop_list(request):
 
     # GET ALL JOB BY THIS
